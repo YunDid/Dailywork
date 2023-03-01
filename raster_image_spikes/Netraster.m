@@ -1,5 +1,5 @@
 % 加载数据，并整理所有 Spike 于一行.
-File = load('E:\Projects\Matlab\data\Network_burst\7-23\1-before-spon-10min\before-spon-10min.mat');
+File = load('E:\Github\Dailywork\data\Network_burst\7-23\7-before-sec-spon-10min\7-before-sec-spon-10min.mat');
 Names = fieldnames(File)
 spikes = [];
 for k = 1:length(Names)
@@ -20,12 +20,12 @@ HistogramISIn(spike_s,N,Steps)
 
 % 获取网络同步爆发起始时间数据.
 NN = 10;
-isi_nn = 0.044;
+isi_nn = 0.112;
 [Burst, SpikeBurstNumber] = BurstDetectISIn( spike_sorted, NN, isi_nn);
 neu_burst = [Burst.T_start' Burst.T_end']
 
 % 外层控制输出图个数 目前60s的间隔
-for t=2:2
+for t=1:1
     start_time = (t-1) * 10 % 开始时间
     end_time = t * 10 % 结束时间
     % for i = 1:
@@ -66,7 +66,7 @@ for t=2:2
 
             set(gca,'xtick',[],'ytick',[]); % 取出坐标
             set(gca,'Visible','off'); % 取出边框
-%           set(gca,'XLim',[0 10]);
+            set(gca,'XLim',[0 10]);
             hold on
          end
     end
