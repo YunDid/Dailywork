@@ -69,7 +69,7 @@ for t=1:1
         % 在单通道爆发绘制后，对同步爆发范围内的数据进行标红.
         % 1. 范围内的全部标注.
         % 累加器 存放当前电极参与同步爆发的序号列表.
-        NBSequence_list = [];
+        Sequence_list = [];
         for j = 1 : length(neu_burst)
             
             % 创建 同步爆发/参与电极列表 对.
@@ -83,7 +83,7 @@ for t=1:1
                 % 统计当前同步爆发下参与的电极序号列表.
                 NBurst_Parameters.Sequence_Ele(j,2) = {[cell2mat(NBurst_Parameters.Sequence_Ele(j,2)) i]};
                 % 统计当前电极参与同步爆发的序号列表.
-                NBSequence_list = [NBSequence_list j];
+                Sequence_list = [Sequence_list j];
                 % 统计当前电极参与的网络爆发次数. 
                 Electrode_Participation.Num_NBurst(i) = Electrode_Participation.Num_NBurst(i) + 1;
                 % 统计参与的电极数.
