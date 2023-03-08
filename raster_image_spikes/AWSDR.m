@@ -59,7 +59,6 @@ avergecolnum=colnum*10
 plot(colnum,'k','linewidth',1)
 
 
-
 % zprint(gcf,'E:\AAAProjects\Matlab\save\SWW-5MINN-30ms.jpg','-r600','-djpeg')%±£´æÂ·¾¶
 % averageSpike=sum(allEleSpike,1)
 % averageSpikeColmun=averageSpike/6000

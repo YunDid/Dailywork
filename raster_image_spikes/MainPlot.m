@@ -27,7 +27,7 @@ for i = 1:length(plyName)
     
     % 绘制 logISI 直方图，确定阈值参数.
     spike_sorted(spike_sorted == 0) = [];
-    N = (10:20);
+    N = (2:10);
     Steps = 10.^(-5:.05:1.5);
     ISI_N = HistogramISIn(spike_sorted,N,Steps);
     
@@ -40,5 +40,4 @@ for i = 1:length(plyName)
     NBRaster_Drawing(File,NBurst);
 end
 
-% 基于统计到的网络爆发参数对数据进行统计分析.
-
+Getstatisticsdata(NBurst_Parameters);

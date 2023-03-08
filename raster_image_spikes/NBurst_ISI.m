@@ -1,5 +1,7 @@
-function [ISIN] = HistogramISIn( SpikeTimes, N, Steps )
+function [ISIN] = NBurst_ISI( SpikeTimes, N, Steps )
 
+% 绘制网络爆发的ISI分布直方图，x轴为log(ISI)，y轴为ISI在所有ISI中的占比.
+% 表明神经元放电时间间隔(ISI)的概率分布情况.
 figure;
 hold on;
 map=hsv(length(N));
@@ -30,8 +32,7 @@ set(gca,'yscale','log')
 % 找寻直方图的波峰，波谷，确定阈值ISIN.
 
 % 确定曲线y的均值.
-% avg_prob = sum_prob / cnt;
-avg_prob = prob;
+avg_prob = prob / cnt;
 
 % 使用 findpeaks 函数查找直方图中的波峰和波谷。
 [pks,locs] = findpeaks(avg_prob);  % 找到波峰
@@ -50,6 +51,5 @@ bin_centers = (Steps(1:end-1) + Steps(2:end)) / 2;
 vec_locx = bin_centers(locs_valleys);
 vec_locx = vec_locx(vec_locx >= 0.1 & vec_locx <= 0.6)
 ISIN = vec_locx(end);
-
 
 

@@ -8,11 +8,11 @@ neu_burst = [NBurst_Parameters.T_start' NBurst_Parameters.T_end'];
 NBurst_Parameters.Num_AllSpikesInNB = sum(NBurst_Parameters.S);
 % 统计同步爆发的次数.
 NBurst_Parameters.Num_NB = length(NBurst_Parameters.T_start);
-% 统计每次同步爆发之间的间隔时间.
+% 统计每次同步爆发之间的持续时间.
 NBurst_Parameters.Duration_NB = NBurst_Parameters.T_end - NBurst_Parameters.T_start;
 % 每次同步爆发之间的间隔时间.
 NBurst_Parameters.ISI_NB =  NBurst_Parameters.T_end(2:end) - NBurst_Parameters.T_start(1:end-1);
-% 统计每次同步爆发参与的电极数.
+% 统计每次同步爆发参与的电极数 / 各个网络爆发通道的贡献度.
 NBurst_Parameters.Num_electrodes = zeros(1,length(NBurst_Parameters.T_start));
 % 每次同步爆发具体的参与电极编号以及对应编号下的参与spike个数.
 NBurst_Parameters.Sequence_Ele = cell(NBurst_Parameters.Num_NB,2);
