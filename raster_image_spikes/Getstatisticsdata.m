@@ -1,7 +1,7 @@
-function Getstatisticsdata(NBurst_Parameters)
+function Getstatisticsdata(NBurst_Parameters,seq)
 
 % 基于统计到的网络爆发参数对数据进行统计分析.
-map=hsv(length(NBurst_Parameters));
+map = hsv(length(NBurst_Parameters));
 % 网络爆发持续时间.
 mean_Duration_NB = [];
 std_Duration_NB = [];
@@ -31,7 +31,7 @@ for i = 1:length(NBurst_Parameters)
     % hold on;
 end
 
-save('Parameter.mat','mean_Duration_NB','std_Duration_NB','mean_ISI_NB','std_ISI_NB','mean_Num_electrodes','std_Num_electrodes','mean_Num_spikes','std_Num_spikes');
+save(char(seq),'mean_Duration_NB','std_Duration_NB','mean_ISI_NB','std_ISI_NB','mean_Num_electrodes','std_Num_electrodes','mean_Num_spikes','std_Num_spikes');
 
 % bar(mean_data);
 % bar(std_data);

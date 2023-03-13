@@ -35,21 +35,30 @@ avg_prob = prob;
 
 % 使用 findpeaks 函数查找直方图中的波峰和波谷。
 [pks,locs] = findpeaks(avg_prob);  % 找到波峰
+% 截取部分有用波峰.
+pks = pks(pks >= 0.0001);
+% 对应保留索引.
+num = [];
+for i = 1:length(locs)
+    if(avg_prob(locs(i)) < 0.0001)
+        num = [num i];
+    end 
+end
+locs(num) = [];
+
 [valleys,locs_valleys] = findpeaks(-avg_prob);  % 找到波谷
 
 % 找到波谷的 x 值。
 bin_centers = (Steps(1:end-1) + Steps(2:end)) / 2;
+pks_x = bin_centers(locs)
 ISIN = bin_centers(locs_valleys)
+% 取两个波峰之间的第一个波谷.
+ISIN = ISIN(ISIN >= pks_x(1) & ISIN > 0.001);
+ISIN = ISIN(1);
 
 % 确定最低的波谷，即高度最小的波谷。
 % [~, min_idx] = min(valleys);
 % min_valley_loc = locs_valleys(min_idx);
-
-% 找到波谷的 x 值。
-bin_centers = (Steps(1:end-1) + Steps(2:end)) / 2;
-vec_locx = bin_centers(locs_valleys);
-vec_locx = vec_locx(vec_locx >= 0.1 & vec_locx <= 0.6)
-ISIN = vec_locx(end);
 
 
 

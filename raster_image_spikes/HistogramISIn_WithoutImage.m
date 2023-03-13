@@ -18,8 +18,8 @@ end
 % 找寻直方图的波峰，波谷，确定阈值ISIN.
 
 % 确定曲线y的均值.
-avg_prob = prob / cnt;
-
+% avg_prob = prob / cnt;
+avg_prob = prob;
 % 使用 findpeaks 函数查找直方图中的波峰和波谷。
 [pks,locs] = findpeaks(avg_prob);  % 找到波峰
 [valleys,locs_valleys] = findpeaks(-avg_prob);  % 找到波谷
@@ -37,6 +37,5 @@ bin_centers = (Steps(1:end-1) + Steps(2:end)) / 2;
 vec_locx = bin_centers(locs_valleys);
 vec_locx = vec_locx(vec_locx >= 0.1 & vec_locx <= 0.6)
 ISIN = vec_locx(end);
-
 
 
