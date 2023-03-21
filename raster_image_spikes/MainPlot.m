@@ -9,6 +9,7 @@ dirfiles = dirfiles(3:end);
 filenames = {dirfiles.name};
 
 for i = 1:length(filenames)
+% for i = 2
     % 顺序读取目录下的所有文件数据. - method_2
     datapath = fullfile('E:\Github\Dailywork\data\Network_burst\',char(filenames(i)));
     dirdata = dir(fullfile(datapath,'*.mat'));

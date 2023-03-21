@@ -8,7 +8,7 @@ map=hsv(length(N));
 % 表明神经元放电时间间隔(ISI)的概率分布情况.
 cnt=0;
 sum_prob = 0;
-for FRnum = N
+for FRnum = 10
     cnt = cnt+1;
     % 保证操作数长度相等. 但是为何要这样确定ISI的值？    
     ISI_N = SpikeTimes( FRnum:end ) - SpikeTimes( 1:end-(FRnum-1) );
@@ -49,12 +49,17 @@ locs(num) = [];
 [valleys,locs_valleys] = findpeaks(-avg_prob);  % 找到波谷
 
 % 找到波谷的 x 值。
-bin_centers = (Steps(1:end-1) + Steps(2:end)) / 2;
+bin_centers = (Steps(N:end) + Steps(1:end-(N-1))) / 2;
 pks_x = bin_centers(locs)
 ISIN = bin_centers(locs_valleys)
+
 % 取两个波峰之间的第一个波谷.
 ISIN = ISIN(ISIN >= pks_x(1) & ISIN > 0.001);
-ISIN = ISIN(1);
+if(length(ISIN) >= 2)
+    ISIN = ISIN(2);
+else
+    ISIN = ISIN(1);
+end
 
 % 确定最低的波谷，即高度最小的波谷。
 % [~, min_idx] = min(valleys);
