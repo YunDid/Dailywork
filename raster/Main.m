@@ -4,8 +4,8 @@ dirfiles = dir(fullfile(filepath));
 dirfiles = dirfiles(3:end);
 filenames = {dirfiles.name};
 cnt = 0;
-for i = 2:length(filenames)
-% for i = 7    
+% for i = 2:length(filenames)
+for i = 7    
     cnt = cnt + 1;
     % 顺序读取目录下的所有文件数据. - method_2
     datapath = fullfile('E:\Github\Dailywork\data\MATDATA\',char(filenames(i)));
@@ -17,8 +17,8 @@ for i = 2:length(filenames)
         Electrode_Participation = cell(1,length(plyName));
     end
     % 遍历当前文件下的所有.mat数据.
-    for j = 1:length(plyName)
-%     for j = 5
+%     for j = 1:length(plyName)
+    for j = 4
         File = load(fullfile('E:\Github\Dailywork\data\MATDATA\',char(filenames(i)),'\',char(plyName(j))));
 
         % 加载数据，并整理所有 Spike 于一行.
@@ -39,18 +39,18 @@ for i = 2:length(filenames)
         Steps = 10.^(-5:.05:1.5);
         
 %         ISI_N = HistogramISIn(spike_sorted,N,Steps);
-% %         if(i == 4)
-%             ISI_N = 0.25;
-% %         end
-        
-        % 进行网络爆发检测，并获取网络爆发参数.
-        [NBurst,Electrode] = GetNBusrtParameters(File,spike_sorted,ISI_N);
-        NBurst_Parameters(j) = {NBurst};
-        Electrode_Participation(j) = {Electrode};
+% % %         if(i == 4)
+% %             ISI_N = 0.25;
+% % %         end
+%         
+%         % 进行网络爆发检测，并获取网络爆发参数.
+%         [NBurst,Electrode] = GetNBusrtParameters(File,spike_sorted,ISI_N);
+%         NBurst_Parameters(j) = {NBurst};
+%         Electrode_Participation(j) = {Electrode};
         
         % 绘制对应的光栅图.
 %         NBRaster_Drawing(File,NBurst);
-        Raster_Drawing(File);
+%         Raster_Drawing(File);
     end
     
 end
