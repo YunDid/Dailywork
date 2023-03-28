@@ -6,8 +6,8 @@ Names = fieldnames(File);
 
 % 外层控制输出图个数 目前60s的间隔
 for t=1:1
-    start_time = (t-1) * 600 % 开始时间
-    end_time = t * 600 % 结束时间
+    start_time = (t-1) * 30 % 开始时间
+    end_time = t * 30 % 结束时间
     % for i = 1:
     for i = 1:length(Names)
         rowNames = Names{i,1};
@@ -24,7 +24,7 @@ for t=1:1
 
             set(gca,'xtick',[],'ytick',[]); % 取出坐标
             set(gca,'Visible','off'); % 取出边框
-            set(gca,'XLim',[0 10]);
+            set(gca,'XLim',[0 30]);
             hold on
         end
     end

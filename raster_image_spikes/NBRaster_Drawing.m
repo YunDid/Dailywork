@@ -9,8 +9,8 @@ neu_burst = [NBurst_Parameters.T_start' NBurst_Parameters.T_end'];
 
 % 外层控制输出图个数 目前60s的间隔
 for t=1:1
-    start_time = (t-1) * 60 % 开始时间
-    end_time = t * 60 % 结束时间
+    start_time = (t-1) * 10 % 开始时间
+    end_time = t * 10 % 结束时间
     % for i = 1:
     for i = 1:length(Names)
         rowNames = Names{i,1};

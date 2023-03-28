@@ -5,7 +5,7 @@ dirfiles = dirfiles(3:end);
 filenames = {dirfiles.name};
 
 % for i = 1:length(filenames)
-for i = 7
+for i = 3
     % 顺序读取目录下的所有文件数据. - method_2
     datapath = fullfile('E:\Github\Dailywork\data\MATDATA\',char(filenames(i)));
     dirdata = dir(fullfile(datapath,'*.mat'));
@@ -34,5 +34,5 @@ for i = 7
     
 end
 
-% bar(Spike_nums);
-bar(Firing_rate);
+bar(Spike_nums);
+% bar(Firing_rate);
