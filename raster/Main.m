@@ -5,7 +5,7 @@ dirfiles = dirfiles(3:end);
 filenames = {dirfiles.name};
 cnt = 0;
 % for i = 2:length(filenames)
-for i = 4    
+for i = 3    
     cnt = cnt + 1;
     % 顺序读取目录下的所有文件数据. - method_2
     datapath = fullfile('E:\Github\Dailywork\data\MATDATA\',char(filenames(i)));
@@ -42,7 +42,7 @@ for i = 4
 %         if(i == 4)
 %             ISI_N = 0.25;
 %         end
-%         ISI_N = 0.43;
+        ISI_N = 0.33;
         % 进行网络爆发检测，并获取网络爆发参数.
         [NBurst,Electrode] = GetNBusrtParameters(File,spike_sorted,ISI_N);
         NBurst_Parameters(j) = {NBurst};

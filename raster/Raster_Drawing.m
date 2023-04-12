@@ -4,6 +4,8 @@ function Raster_Drawing(File)
 % 获取电极名称.
 Names = fieldnames(File);
 
+% 设置线条宽度.
+line_wid = 1.8;
 % 外层控制输出图个数 目前60s的间隔
 for t=1:1
     start_time = (t-1) * 30 % 开始时间
@@ -20,7 +22,7 @@ for t=1:1
             % 64 个电极分区域绘制.
             subplot(64,1,i);
             % 可更改颜色和粗细[0.067,0.443,0.705] % plot(bin_Data(f),i,".",'Color',[0,0,0]); 
-            plot([bin_Data(f),bin_Data(f)],[i-1,i],'Color',[0,0,0],'linewidth',0.8); 
+            plot([bin_Data(f),bin_Data(f)],[i-1,i],'Color',[0,0,0],'linewidth',line_wid); 
 
             set(gca,'xtick',[],'ytick',[]); % 取出坐标
             set(gca,'Visible','off'); % 取出边框

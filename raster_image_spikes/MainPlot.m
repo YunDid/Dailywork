@@ -3,15 +3,15 @@
 % MatPath  = dir([FolderPath '*.mat']);
 
 % 提取文件目录.
-filepath = 'E:\Github\Dailywork\data\Network_burst';
+filepath = 'E:\Github\Dailywork\data\Shao\Third_Spon_Data';
 dirfiles = dir(fullfile(filepath));
 dirfiles = dirfiles(3:end);
 filenames = {dirfiles.name};
 
-for i = 1:length(filenames)
-% for i = 2
+% for i = 1:length(filenames)
+for i = 1
     % 顺序读取目录下的所有文件数据. - method_2
-    datapath = fullfile('E:\Github\Dailywork\data\Network_burst\',char(filenames(i)));
+    datapath = fullfile('E:\Github\Dailywork\data\Shao\Third_Spon_Data\',char(filenames(i)));
     dirdata = dir(fullfile(datapath,'*.mat'));
     plyName = {dirdata.name};
     % 顺序加载数据.mat文件,获取爆发参数.
@@ -19,8 +19,9 @@ for i = 1:length(filenames)
     Electrode_Participation = cell(1,length(plyName));
     
     % 遍历当前文件下的所有.mat数据.
-    for j = 1:length(plyName)
-        File = load(fullfile('E:\Github\Dailywork\data\Network_burst\',char(filenames(i)),'\',char(plyName(j))));
+%     for j = 1:length(plyName)
+    for j = 1
+        File = load(fullfile('E:\Github\Dailywork\data\Shao\Third_Spon_Data\',char(filenames(i)),'\',char(plyName(j))));
         
         % 加载数据，并整理所有 Spike 于一行.
         Names = fieldnames(File)
@@ -36,9 +37,10 @@ for i = 1:length(filenames)
         
         % 绘制 logISI 直方图，确定阈值参数.
         spike_sorted(spike_sorted == 0) = [];
-        N = (2:10);
-        Steps = 10.^(-5:.05:1.5);
-        ISI_N = HistogramISIn(spike_sorted,N,Steps);
+%         N = (2:10);
+%         Steps = 10.^(-5:.05:1.5);
+%         ISI_N = HistogramISIn(spike_sorted,N,Steps);
+        ISI_N = 0.186460279893536;
         
         % 进行网络爆发检测，并获取网络爆发参数.
         [NBurst,Electrode] = GetNBusrtParameters(File,spike_sorted,ISI_N);
@@ -49,6 +51,7 @@ for i = 1:length(filenames)
         NBRaster_Drawing(File,NBurst);
     end
     
-    Getstatisticsdata(NBurst_Parameters,filenames(i));
+%     save(fullfile('E:\Github\Dailywork\data\Shao\Third_Spon_Data\',char(filenames(i)),'NBBurst.mat'),'NBurst_Parameters','Electrode_Participation');
+%     Getstatisticsdata(NBurst_Parameters,filenames(i));
     
 end

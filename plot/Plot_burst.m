@@ -46,7 +46,7 @@ end
 
 % 统计 Spike 总数.
 Spike_nums = [Spike_nums length(spikes)];
-% 统计每秒的 SPike 数-放电率.
+% 统计每秒的 Spike 数-放电率.
 Firing_rate = Spike_nums / 600;
 % 统计每分钟的爆发数-爆发率.
 Burst_rate = [NBurst_Parameters{1}.Num_NB NBurst_Parameters{2}.Num_NB];
